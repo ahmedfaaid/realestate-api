@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Listing {
+  id: ID!
+  title: String!
+  address1: String!
+  address2: String
+  city: String!
+  province: String!
+  postalCode: String!
+}
+
+type Query {
+  listings: [Listing!]!
+  listing(id: String!): Listing!
+}
+
+type Mutation {
+  createListing(input: ListingInput!): Listing!
+}
+
+input ListingInput {
+  title: String!
+  address1: String!
+  address2: String
+  city: String!
+  province: String!
+  postalCode: String!
+}
