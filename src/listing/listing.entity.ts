@@ -31,6 +31,18 @@ export class Listing {
   @Column()
   @Field()
   postalCode: string;
+
+  @Column()
+  @Field()
+  description: string;
+
+  // @Column('float')
+  // @Field()
+  // longitude: number;
+
+  // @Column('float')
+  // @Field()
+  // latitude: number;
 }
 
 @InputType()
@@ -52,4 +64,7 @@ export class ListingInput {
 
   @Field()
   postalCode: string;
+
+  @Field()
+  description: string;
 }

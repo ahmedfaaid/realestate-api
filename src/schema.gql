@@ -10,6 +10,7 @@ type Listing {
   city: String!
   province: String!
   postalCode: String!
+  description: String!
 }
 
 type Query {
@@ -28,4 +29,5 @@ input ListingInput {
   city: String!
   province: String!
   postalCode: String!
+  description: String!
 }
