@@ -11,6 +11,8 @@ type Listing {
   province: String!
   postalCode: String!
   description: String!
+  longitude: Float!
+  latitude: Float!
 }
 
 type Query {
@@ -30,4 +32,6 @@ input ListingInput {
   province: String!
   postalCode: String!
   description: String!
+  longitude: Float!
+  latitude: Float!
 }

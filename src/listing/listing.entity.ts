@@ -36,13 +36,13 @@ export class Listing {
   @Field()
   description: string;
 
-  // @Column('float')
-  // @Field()
-  // longitude: number;
+  @Column('float')
+  @Field()
+  longitude: number;
 
-  // @Column('float')
-  // @Field()
-  // latitude: number;
+  @Column('float')
+  @Field()
+  latitude: number;
 }
 
 @InputType()
@@ -67,4 +67,10 @@ export class ListingInput {
 
   @Field()
   description: string;
+
+  @Field()
+  longitude: number;
+
+  @Field()
+  latitude: number;
 }
