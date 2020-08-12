@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./src/db/docker-data/db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'realestate'
+    ports:
+      - 5544:5432
