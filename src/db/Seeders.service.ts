@@ -2,13 +2,13 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Connection, Repository } from 'typeorm';
 import Listr from 'listr';
 
-import { Listing, ListingInput } from '../listing/listing.entity';
+import { Listing } from '../listing/listing.entity';
 import { ListingService } from '../listing/listing.service';
 
-interface CTX {
-  listings: Listing[];
-  input: ListingInput;
-}
+// interface CTX {
+//   listings: Listing[];
+//   input: ListingInput;
+// }
 
 @Injectable()
 export class SeederService {
@@ -23,7 +23,7 @@ export class SeederService {
     return this.connection.getRepository(entity);
   }
 
-  async seedListings(input: ListingInput): Promise<Listing[]> {
+  async seedListings(): Promise<Listing[]> {
     const newListings = [
       {
         title: 'Great place, great location',
@@ -58,7 +58,7 @@ export class SeederService {
     ];
 
     return Promise.all(newListings.map(async listing => {
-      return await this.listingService.create(input(listing));
+      return await this.listingService.create(listing);
     }));
   }
 
@@ -74,8 +74,8 @@ export class SeederService {
       },
       {
         title: 'Create listings',
-        task: async (ctx: CTX) => {
-          ctx.listings = await this.seedListings(ctx.input);
+        task: async () => {
+          await this.seedListings();
         }
       }
     ]).run();

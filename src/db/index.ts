@@ -1,7 +1,6 @@
-  
-import { NestFactory } from '@nestjs/core';
+  import { NestFactory } from '@nestjs/core';
 
-import { AppModule } from '../../App.module';
+import { AppModule } from '../app.module';
 import { SeederService } from './Seeders.service';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
