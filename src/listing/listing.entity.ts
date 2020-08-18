@@ -1,4 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 import { Field, ObjectType, InputType, ID } from '@nestjs/graphql';
 
 @ObjectType()
@@ -36,6 +41,14 @@ export class Listing {
   @Field()
   description: string;
 
+  @Column()
+  @Field()
+  desposition: string;
+
+  @Column()
+  @Field()
+  price: number;
+
   @Column('float')
   @Field()
   longitude: number;
@@ -43,6 +56,10 @@ export class Listing {
   @Column('float')
   @Field()
   latitude: number;
+
+  @CreateDateColumn({ name: 'createdAt' })
+  @Field()
+  createdAt: string;
 }
 
 @InputType()
@@ -67,6 +84,12 @@ export class ListingInput {
 
   @Field()
   description: string;
+
+  @Field()
+  desposition: string;
+
+  @Field()
+  price: number;
 
   @Field()
   longitude: number;
