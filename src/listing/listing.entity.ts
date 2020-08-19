@@ -43,7 +43,7 @@ export class Listing {
 
   @Column()
   @Field()
-  desposition: string;
+  disposition: string;
 
   @Column()
   @Field()
@@ -86,7 +86,7 @@ export class ListingInput {
   description: string;
 
   @Field()
-  desposition: string;
+  disposition: string;
 
   @Field()
   price: number;
