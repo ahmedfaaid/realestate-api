@@ -25,6 +25,6 @@ export class ListingService {
     const listing = await this.listingRepository.create(input);
     listing.id = uuid();
 
-    return this.listingRepository.save(listing);
+    return await this.listingRepository.save(listing);
   }
 }
