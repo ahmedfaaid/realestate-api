@@ -3,8 +3,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { Field, ObjectType, InputType, ID } from '@nestjs/graphql';
+import { Image } from '../image/image.entity';
 
 @ObjectType()
 @Entity()
@@ -48,6 +50,10 @@ export class Listing {
   @Column()
   @Field()
   price: number;
+
+  @ManyToOne(() => Image)
+  @Field()
+  image: Image;
 
   @Column('float')
   @Field()
