@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ListingModule } from './listing/listing.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ImageModule } from './image/image.module';
 
@@ -14,6 +15,9 @@ import { ImageModule } from './image/image.module';
       uploads: true,
     }),
     TypeOrmModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     ListingModule,
     ImageModule,
   ],
