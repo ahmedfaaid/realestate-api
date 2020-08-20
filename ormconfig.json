@@ -6,7 +6,6 @@
   "password": "postgres",
   "database": "realestate",
   "entities": ["dist/**/*.entity{.ts,.js}"],
-  "synchronize": true,
   "logging": true,
   "autoLoadEntities": true
 }
