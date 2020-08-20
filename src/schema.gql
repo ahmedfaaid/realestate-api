@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Image {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  path: String!
+  createdAt: String!
+}
+
 type Listing {
   id: ID!
   title: String!
@@ -13,6 +21,7 @@ type Listing {
   description: String!
   disposition: String!
   price: Float!
+  image: Image!
   longitude: Float!
   latitude: Float!
   createdAt: String!
@@ -21,10 +30,13 @@ type Listing {
 type Query {
   listings: [Listing!]!
   listing(id: String!): Listing!
+  images: [Image!]!
+  image(id: String!): Image!
 }
 
 type Mutation {
   createListing(input: ListingInput!): Listing!
+  createImage(image: Upload!): Image!
 }
 
 input ListingInput {
@@ -40,3 +52,6 @@ input ListingInput {
   longitude: Float!
   latitude: Float!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
