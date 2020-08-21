@@ -16,7 +16,10 @@ export class ListingService {
   }
 
   async findById(id: string): Promise<Listing> {
-    const listing = await this.listingRepository.findOne({ where: { id } });
+    const listing = await this.listingRepository.findOne({
+      where: { id },
+      relations: ['image'],
+    });
     if (!listing) throw new NotFoundException('Listing not found');
     return listing;
   }
