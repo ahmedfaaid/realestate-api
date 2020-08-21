@@ -13,8 +13,8 @@ const storeUpload = async ({ stream, filename, mimetype }) => {
   );
 };
 
-export const processUpload = async (upload: FileUpload): Promise<any> => {
-  const { createReadStream, filename, mimetype } = upload;
-  const stream = createReadStream();
+export const processUpload = async (image: FileUpload): Promise<any> => {
+  const { createReadStream, filename, mimetype } = image;
+  const stream = await createReadStream();
   return await storeUpload({ stream, filename, mimetype });
 };

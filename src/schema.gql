@@ -35,9 +35,12 @@ type Query {
 }
 
 type Mutation {
-  createListing(input: ListingInput!): Listing!
+  createListing(image: Upload!, input: ListingInput!): Listing!
   createImage(image: Upload!): Image!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 input ListingInput {
   title: String!
@@ -52,6 +55,3 @@ input ListingInput {
   longitude: Float!
   latitude: Float!
 }
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
