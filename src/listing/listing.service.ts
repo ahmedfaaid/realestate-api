@@ -12,7 +12,7 @@ export class ListingService {
   ) {}
 
   async findAll(): Promise<Listing[]> {
-    return await this.listingRepository.find();
+    return await this.listingRepository.find({ relations: ['image'] });
   }
 
   async findById(id: string): Promise<Listing> {

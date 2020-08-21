@@ -17,6 +17,7 @@ import { ImageModule } from './image/image.module';
     TypeOrmModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/graphql'],
     }),
     ListingModule,
     ImageModule,

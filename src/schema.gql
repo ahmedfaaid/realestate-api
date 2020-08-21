@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Image {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  path: String!
+  createdAt: String!
+}
+
 type Listing {
   id: ID!
   title: String!
@@ -13,17 +21,9 @@ type Listing {
   description: String!
   disposition: String!
   price: Float!
-  imageId: String!
+  image: Image!
   longitude: Float!
   latitude: Float!
-  createdAt: String!
-}
-
-type Image {
-  id: ID!
-  filename: String!
-  mimetype: String!
-  path: String!
   createdAt: String!
 }
 
