@@ -51,9 +51,9 @@ export class Listing {
   @Field()
   price: number;
 
-  @ManyToOne(() => Image)
-  @Field(() => Image)
-  image: Image;
+  @Column()
+  @Field()
+  imageId: string;
 
   @Column('float')
   @Field()
