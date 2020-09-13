@@ -5,9 +5,10 @@ import { FileUpload } from 'graphql-upload';
 const storeUpload = async ({ stream, filename, mimetype }) => {
   const id = uuid();
   const path = `images/${id}-${filename}`;
+  const filePath = `public/${path}`;
   return new Promise((resolve, reject) =>
     stream
-      .pipe(createWriteStream(path))
+      .pipe(createWriteStream(filePath))
       .on('finish', () => resolve({ id, path, filename, mimetype }))
       .on('error', reject),
   );

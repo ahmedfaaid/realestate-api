@@ -45,6 +45,11 @@ export class ListingService {
     listing.id = uuid();
     listing.image = newImage.id;
 
-    return await this.listingRepository.save(listing);
+    await this.listingRepository.save(listing);
+
+    return await this.listingRepository.findOne({
+      where: { id: listing.id },
+      relations: ['image'],
+    });
   }
 }
