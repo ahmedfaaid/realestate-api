@@ -16,7 +16,11 @@ import { ImageModule } from './image/image.module';
     }),
     TypeOrmModule.forRoot(
       process.env.NODE_ENV === 'production'
-        ? { url: process.env.DATABASE_URL }
+        ? {
+            type: 'postgres',
+            url: process.env.DATABASE_URL,
+            entities: ['dist/**/*.entity{.ts,.js}'],
+          }
         : null,
     ),
     ServeStaticModule.forRoot({
