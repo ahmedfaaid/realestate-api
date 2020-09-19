@@ -14,7 +14,11 @@ import { ImageModule } from './image/image.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       uploads: true,
     }),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(
+      process.env.NODE_ENV === 'production'
+        ? { url: process.env.DATABASE_URL }
+        : null,
+    ),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
       exclude: ['/graphql'],
