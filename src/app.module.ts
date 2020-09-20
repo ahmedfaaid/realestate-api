@@ -14,6 +14,7 @@ import { ImageModule } from './image/image.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       uploads: true,
       playground: true,
+      introspection: true,
     }),
     TypeOrmModule.forRoot(
       process.env.NODE_ENV === 'production'
