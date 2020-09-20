@@ -13,6 +13,7 @@ import { ImageModule } from './image/image.module';
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       uploads: true,
+      playground: true,
     }),
     TypeOrmModule.forRoot(
       process.env.NODE_ENV === 'production'
