@@ -7,7 +7,7 @@ const port = 4000;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
-      origin: 'https://realestate-client.herokuapp.com',
+      origin: 'https://real-estate-ahmed.netlify.app/',
       credentials: true,
     },
   });
