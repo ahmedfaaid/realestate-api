@@ -14,7 +14,10 @@ export const cloudinaryUpload = async (image: FileUpload): Promise<any> => {
       const response = cloudinary.uploader.upload_stream(
         {
           public_id: uploadName,
-          upload_preset: 'lwws63c8-realestate',
+          upload_preset:
+            process.env.NODE_ENV === 'production'
+              ? 'lwws63c8-realestate'
+              : 'cgt7pes8',
         },
         function(error, result) {
           if (error) {
