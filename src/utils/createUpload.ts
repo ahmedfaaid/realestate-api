@@ -1,21 +1,38 @@
 import { uuid } from 'uuidv4';
-import { createWriteStream } from 'fs';
 import { FileUpload } from 'graphql-upload';
+import { cloudinary } from '../utils/cloudinary';
 
-const storeUpload = async ({ stream, filename, mimetype }) => {
-  const id = uuid();
-  const path = `images/${id}-${filename}`;
-  const filePath = `public/${path}`;
-  return new Promise((resolve, reject) =>
-    stream
-      .pipe(createWriteStream(filePath))
-      .on('finish', () => resolve({ id, path, filename, mimetype }))
-      .on('error', reject),
-  );
-};
-
-export const processUpload = async (image: FileUpload): Promise<any> => {
+export const cloudinaryUpload = async (image: FileUpload): Promise<any> => {
   const { createReadStream, filename, mimetype } = image;
   const stream = await createReadStream();
-  return await storeUpload({ stream, filename, mimetype });
+  const id = uuid();
+  const uploadName = `${id}-${filename.replace(/\..+$/, '')}`;
+  let path;
+
+  try {
+    await new Promise((resolve, reject) => {
+      const response = cloudinary.uploader.upload_stream(
+        {
+          public_id: uploadName,
+          upload_preset: 'lwws63c8-realestate',
+        },
+        function(error, result) {
+          if (error) {
+            console.error(error);
+            reject(error);
+          }
+
+          path = result.secure_url;
+
+          resolve(result);
+        },
+      );
+
+      stream.pipe(response);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+  return { id, path, filename: uploadName, mimetype };
 };

@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FileUpload } from 'graphql-upload';
 import { Image } from './image.entity';
-import { processUpload } from '../utils/createUpload';
+import { cloudinaryUpload } from '../utils/createUpload';
 
 @Injectable()
 export class ImageService {
@@ -29,7 +29,7 @@ export class ImageService {
   }
 
   async create(upload: FileUpload): Promise<Image> {
-    const image = await processUpload(upload);
+    const image = await cloudinaryUpload(upload);
 
     if (!image)
       throw new NotAcceptableException('There was an issue with the file');

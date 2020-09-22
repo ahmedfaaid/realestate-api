@@ -8,7 +8,7 @@ import { Listing, ListingInput } from './listing.entity';
 import { Repository } from 'typeorm';
 import { uuid } from 'uuidv4';
 import { FileUpload } from 'graphql-upload';
-import { processUpload } from '../utils/createUpload';
+import { cloudinaryUpload } from '../utils/createUpload';
 import { Image } from 'src/image/image.entity';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class ListingService {
   }
 
   async create(input: ListingInput, image: FileUpload): Promise<Listing> {
-    const newImage = await processUpload(image);
+    const newImage = await cloudinaryUpload(image);
 
     if (!newImage)
       throw new NotAcceptableException('There was an issue with the file');

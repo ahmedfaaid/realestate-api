@@ -3,8 +3,8 @@ import { Module } from '@nestjs/common';
 // import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ListingModule } from './listing/listing.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { ListingModule } from './listing/listing.module';
 import { join } from 'path';
 import { ImageModule } from './image/image.module';
 
@@ -23,7 +23,7 @@ import { ImageModule } from './image/image.module';
             url: process.env.DATABASE_URL,
             entities: ['dist/**/*.entity{.ts,.js}'],
           }
-        : null,
+        : {},
     ),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
