@@ -5,17 +5,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ListingModule } from './listing/listing.module';
-import { join } from 'path';
 import { ImageModule } from './image/image.module';
+import { GraphQLWithUploadModule } from './graphql-with-upload.module';
+import { join } from 'path';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      uploads: true,
-      playground: true,
-      introspection: true,
-    }),
+    GraphQLWithUploadModule.forRoot(),
     TypeOrmModule.forRoot(
       process.env.NODE_ENV === 'production'
         ? {

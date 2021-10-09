@@ -1,6 +1,5 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { FileUpload } from 'graphql-upload';
-import { GraphQLUpload } from 'apollo-server-express';
+import { FileUpload, GraphQLUpload } from 'graphql-upload';
 import { ListingService } from './listing.service';
 import { Listing, ListingInput } from './listing.entity';
 
