@@ -22,6 +22,7 @@ import { ImageModule } from './image/image.module';
             type: 'postgres',
             url: process.env.DATABASE_URL,
             entities: ['dist/**/*.entity{.ts,.js}'],
+            ssl: true,
           }
         : {},
     ),
