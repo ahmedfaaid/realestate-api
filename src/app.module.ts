@@ -18,7 +18,9 @@ import { join } from 'path';
             type: 'postgres',
             url: process.env.DATABASE_URL,
             entities: ['dist/**/*.entity{.ts,.js}'],
-            ssl: true,
+            ssl: {
+              rejectUnauthorized: false,
+            },
           }
         : {},
     ),
